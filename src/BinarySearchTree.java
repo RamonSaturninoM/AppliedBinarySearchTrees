@@ -2,31 +2,112 @@ public class BinarySearchTree {
     Node root;
     
     public void insert(Person person){
-        //inserts new person to bst
+        root = insertRecursive(root, person);
     }
+    
+    private Node insertRecursive(Node node, Person person) {
+        if (node == null) {
+            return new Node(person);
+        }
+
+        if (person.compareTo(node.person) < 0) {
+            node.left = insertRecursive(node.left, person);
+        } else if (person.compareTo(node.person) > 0) {
+            node.right = insertRecursive(node.right, person);
+        }
+        return node;
+    }
+    
+    
     
     public Person search(String name){
-        return null;
+        return searchRecursive(root, name);
     }
+    
+    private Person searchRecursive(Node node, String name) {
+        if (node == null) {
+            return null;
+        }
+
+        int comparison = name.compareToIgnoreCase(node.person.name);
+        if (comparison == 0) {
+            return node.person;
+        } else if (comparison < 0) {
+            return searchRecursive(node.left, name);
+        } else {
+            return searchRecursive(node.right, name);
+        }
+    }
+    
+    
     
     public void inorderTraversal(){
-        System.out.println("Contacts: ");
+        inorderRecursive(root);
     }
+    
+    private void inorderRecursive(Node node) {
+        if (node != null) {
+            inorderRecursive(node.left);
+            System.out.println(node.person);
+            inorderRecursive(node.right);
+        }
+    }
+    
+    
     
     public int countNodes(){
-        int contacts = 0;
-        return contacts;
+        return countNodesRecursive(root);
     }
+    
+    private int countNodesRecursive(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + countNodesRecursive(node.left) + countNodesRecursive(node.right);
+    }
+    
+    
     
     public int height(){
-        return 0;
+        return heightRecursive(root);
     }
+    
+    private int heightRecursive(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + Math.max(heightRecursive(node.left), heightRecursive(node.right));
+    }
+    
+    
     
     public Person findMin(){
-        return null;
+        if (root == null){
+            return null;
+        }
+        return findMinRecursive(root);
     }
     
+    private Person findMinRecursive(Node node) {
+        if (node.left == null) {
+            return node.person;
+        }
+        return findMinRecursive(node.left);
+    }
+    
+    
+    
     public Person findMax(){
-        return null;
+        if (root == null){
+            return null;
+        }
+        return findMaxRecursive(root);
+    }
+    
+    private Person findMaxRecursive(Node node) {
+        if (node.right == null) {
+            return node.person;
+        }
+        return findMaxRecursive(node.right);
     }
 }

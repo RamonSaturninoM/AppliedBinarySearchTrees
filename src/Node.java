@@ -4,6 +4,8 @@ public class Node {
     Node right;
     
     public Node(Person person){
-        
+        this.person = person;
+        left = null;
+        right = null;
     }
 }
