@@ -3,6 +3,15 @@ public class Person implements Comparable<Person>{
     String address;
     String phone;
     
+    /**
+     * Simple constructor for person node
+     * 
+     * @param name
+     * @param address
+     * @param phone 
+     * 
+     * @author ramonsaturnino
+     */
     public Person(String name, String address, String phone){
         this.name = name;
         this.address = address;

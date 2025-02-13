@@ -1,6 +1,17 @@
 public class BinarySearchTree {
     Node root;
     
+    /**
+     * All methods within this class, have the essential 
+     * functionalities a tree should have, since the given
+     * functions by professor were void, I created helper function
+     * to allow better performance when calling certain
+     * methods.
+     *  
+     * 
+     * @author ramonsaturnino
+     */
+    
     public void insert(Person person){
         root = insertRecursive(root, person);
     }

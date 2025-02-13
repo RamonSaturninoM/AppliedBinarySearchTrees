@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 public class BSTApp {
     
+    /**
+     * Main class that will handle and call all necessary methods
+     * in order to run the application.
+     * 
+     * @param args 
+     * 
+     * @author ramonsaturnino
+     */
     public static void main(String[] args){
         BinarySearchTree tree = new BinarySearchTree();
         readFile("src/Person.txt", tree);
@@ -22,6 +30,17 @@ public class BSTApp {
         sc.close();
     }
     
+    /**
+     * 
+     * @param filename
+     * @param tree 
+     * 
+     * his method ensures that the file is read, it also handles
+     * any possible exception, method expects file name, and 
+     * a tree object for insertion.
+     * 
+     * @author ramonsaturnino
+     */
     private static void readFile(String filename, BinarySearchTree tree){
         try (Scanner fileScanner = new Scanner(new File(filename))) {
             while (fileScanner.hasNextLine()) {
@@ -38,6 +57,15 @@ public class BSTApp {
         }
     }
     
+    /**
+     * Method expects the user to do insertion to the given
+     * tree using name, address and phone as node data.
+     * 
+     * @param tree
+     * @param sc 
+     * 
+     * @author ramonsaturnino
+     */
     private static void addNewEntry(BinarySearchTree tree, Scanner sc){
         System.out.print("Enter name: ");
         String name = sc.nextLine();
@@ -51,6 +79,11 @@ public class BSTApp {
         System.out.println("Contact added successfully.");
     }
     
+    /**
+     * Method just displays available options
+     * 
+     * @author ramonsaturnino
+     */
     private static void displayMenu(){
         System.out.println("MENU:");
         System.out.println("1. Display Contacts (Sorted)");
@@ -63,6 +96,16 @@ public class BSTApp {
         System.out.print("Choose an option: ");
     }
     
+    /**
+     * Does the logic for the menu operations, based on 
+     * user input.
+     * 
+     * @param tree
+     * @param sc
+     * @param choice 
+     * 
+     * @author ramonsaturnino
+     */
     private static void processMenu(BinarySearchTree tree, Scanner sc, int choice){
         switch (choice) {
             case 1:
